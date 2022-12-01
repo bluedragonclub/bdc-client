@@ -1,0 +1,21 @@
+---
+
+"COURSE": "CAU_OOP_2022"
+"ASSIGNMENT": "ASSIGNMENT_04"
+
+"ID": "00000000"
+"FILES":
+    - "assignment_04/DynamicArray.cpp"
+    - "assignment_04/DynamicArray.h"
+"PROBLEMS": 
+    - "PROBLEM_01"
+    - "PROBLEM_02"
+    - "PROBLEM_03"
+    - "PROBLEM_04"
+    - "PROBLEM_05"
+    - "PROBLEM_06"
+    - "PROBLEM_07"
+    - "PROBLEM_08"
+    - "PROBLEM_09"
+    - "PROBLEM_10"
+    - "PROBLEM_11"    

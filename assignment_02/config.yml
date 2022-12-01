@@ -1,0 +1,32 @@
+---
+
+"COURSE": "CAU_OOP_2022"
+"ASSIGNMENT": "ASSIGNMENT_02"
+
+"ID": "00000000"
+"FILES":
+    - "assignment_02/vector3d.cpp"
+    - "assignment_02/vector3d.h"
+"PROBLEMS": 
+    - "PROBLEM_01B"
+    - "PROBLEM_01C"
+    - "PROBLEM_01D"
+    - "PROBLEM_01E"
+    - "PROBLEM_01F"
+    - "PROBLEM_01G"
+    - "PROBLEM_01H"
+    - "PROBLEM_01I"
+    - "PROBLEM_01J"
+    - "PROBLEM_01K"
+    
+    - "PROBLEM_02A"
+    - "PROBLEM_02B"
+    - "PROBLEM_02C"
+    - "PROBLEM_02D"
+    - "PROBLEM_02E" 
+    
+    - "PROBLEM_03A"
+    - "PROBLEM_03B"
+    - "PROBLEM_03C"
+    - "PROBLEM_03D"
+    - "PROBLEM_03E"   

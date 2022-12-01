@@ -1,0 +1,14 @@
+---
+
+"COURSE": "CAU_OOP_2022"
+"ASSIGNMENT": "ASSIGNMENT_03"
+
+"ID": "00000000"
+"FILES":
+    - "assignment_03/Vector3d.cpp"
+    - "assignment_03/Vector3d.h"
+"PROBLEMS": 
+    - "PROBLEM_01"
+    - "PROBLEM_02"
+    - "PROBLEM_03"
+    - "PROBLEM_04"

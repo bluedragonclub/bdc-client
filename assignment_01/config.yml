@@ -1,0 +1,24 @@
+---
+
+"COURSE": "CAU_OOP_2022"
+"ASSIGNMENT": "ASSIGNMENT_01"
+
+"ID": "00000000"
+"FILES":
+    - "assignment_01/mathlib.cpp"
+    - "assignment_01/mathlib.h"
+"PROBLEMS": 
+    - "PROBLEM_01A"
+    - "PROBLEM_01B"
+    - "PROBLEM_02A"
+    - "PROBLEM_02B"
+    - "PROBLEM_03A"
+    - "PROBLEM_03B"
+    - "PROBLEM_04A"
+    - "PROBLEM_04B"
+    - "PROBLEM_04C"
+    - "PROBLEM_05B"
+    - "PROBLEM_05C"
+    - "PROBLEM_05D"
+    - "PROBLEM_05E"
+    - "PROBLEM_06C"
