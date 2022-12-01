@@ -5,8 +5,8 @@
 
 "ID": "00000000"
 "FILES":
-    - "assignment_01/mathlib.cpp"
-    - "assignment_01/mathlib.h"
+    - "cau_oop_2022/assignment_01/mathlib.cpp"
+    - "cau_oop_2022/assignment_01/mathlib.h"
 "PROBLEMS": 
     - "PROBLEM_01A"
     - "PROBLEM_01B"

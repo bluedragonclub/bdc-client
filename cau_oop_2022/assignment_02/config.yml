@@ -5,8 +5,8 @@
 
 "ID": "00000000"
 "FILES":
-    - "assignment_02/vector3d.cpp"
-    - "assignment_02/vector3d.h"
+    - "cau_oop_2022/assignment_02/vector3d.h"
+    - "cau_oop_2022/assignment_02/vector3d.cpp"
 "PROBLEMS": 
     - "PROBLEM_01B"
     - "PROBLEM_01C"

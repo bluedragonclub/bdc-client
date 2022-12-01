@@ -5,8 +5,8 @@
 
 "ID": "00000000"
 "FILES":
-    - "assignment_04/DynamicArray.cpp"
-    - "assignment_04/DynamicArray.h"
+    - "cau_oop_2022/assignment_04/DynamicArray.h"
+    - "cau_oop_2022/assignment_04/DynamicArray.cpp"
 "PROBLEMS": 
     - "PROBLEM_01"
     - "PROBLEM_02"
