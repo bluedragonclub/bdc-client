@@ -6,33 +6,44 @@
 
 ## 설치 방법
 
-:snake: [Anaconda](https://www.anaconda.com) 및 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) 사용을 권합니다.
+### 저장소 다운로드
+- `git` 명령어를 이용하여 저장소를 로컬 저장소에 복제합니다.
+- `git` 사용이 어려우신 분은 저장소를 `*.zip` 파일로 다운로드 받으실 수 있습니다.
+
+```
+https://github.com/bluedragonclub/bdc-client.git
+```
 
 
-### Anaconda & Miniconda 가상환경 설정
+### 가상환경 생성
+- :snake: [Anaconda](https://www.anaconda.com) 및 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) 사용을 권합니다.
 
-Anaconda 또는 Miniconda 설치 후 다음 명령어를 실행하여 가상환경을 만듭니다. 아래 명령어 예시에서 가상환경 이름을 `bdc`로 정의하였지만, 사용자가 원하는 이름으로 변경할 수 있습니다. Python 버전은 `3.7` 이상을 사용하시기를 바랍니다.
+- Anaconda 또는 Miniconda 설치 후 다음 명령어를 실행하여 가상환경을 만듭니다. 
+- 아래 명령어 예시에서 가상환경 이름을 `bdc`로 정의하였지만, 사용자가 원하는 이름으로 변경할 수 있습니다.
+- Python 버전은 `3.7` 이상을 사용하시기를 바랍니다.
 
 ```
 conda create -n bdc python=3.10
 ```
 
-가상환경 설치가 완료되면 아래와 같이 `conda` 명령어를 통해 가상환경을 활성화 시킬 수 있습니다.
+가상환경 생성이 완료되면 아래와 같이 `conda` 명령어를 통해 가상환경을 활성화 시킬 수 있습니다.
 
 ```
 conda activate bdc
 ```
 
+### 의존 패키지 설치
+
 `bdc-client`의 의존 패키지를 설치하기 위해 아래와 같이 `pip`를 설치합니다.
 
 ```
-conda install pip
+(bdc) conda install pip
 ```
 
 의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다.
 
 ```
-pip install -r requirements.txt
+(bdc) pip install -r requirements.txt
 ```
 
 
