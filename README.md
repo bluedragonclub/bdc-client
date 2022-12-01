@@ -6,9 +6,7 @@
 
 ## 설치
 
-- Windows 및 Linux 사용자는 [Anaconda](https://www.anaconda.com) 사용을 권합니다.
-
-- Apple M1 사용자는 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) 사용을 권합니다.
+:snake: [Anaconda](https://www.anaconda.com) 및 [Miniconda](https://docs.conda.io/en/latest/miniconda.html) 사용을 권합니다.
 
 
 ### Anaconda & Miniconda 가상환경 설정
