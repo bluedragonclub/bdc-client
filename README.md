@@ -29,7 +29,7 @@ conda activate bdc
 conda install pip
 ```
 
-의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 다음과 같이 설치할 수 있습니다. `requirements.txt`에서 의존 패키지를 참고하실 수 있습니다.
+의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다.
 
 ```
 pip install -r requirements.txt
