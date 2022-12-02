@@ -28,8 +28,11 @@ def menu_start(console):
     while True:
         try:
             input = getch()
-            input = input.decode().strip()
-            input = input.lower()
+
+            if isinstance(input, bytes):
+                input = input.decode()
+                
+            input = input.strip().lower()
 
             if input in ["1", "2", "q", "i"]:
                 break
@@ -154,8 +157,10 @@ def menu_main(console, config):
             try:         
                 
                 input = getch()
-                input = input.decode().strip()
-                input = input.lower()
+                if isinstance(input, bytes):
+                    input = input.decode()
+
+                input = input.strip().lower()
 
                 if input in ["1", "2", "3", "4", "a", "r", "c", "q"]:
                     break
