@@ -40,7 +40,7 @@ conda activate bdc
 (bdc) conda install pip
 ```
 
-의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다.
+의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다. `requirements.txt`가 존재하는 `bdc-client` 저장소 내에서 다음 명령어를 실행하여 의존 패키지를 설치합니다.
 
 ```
 (bdc) pip install -r requirements.txt
