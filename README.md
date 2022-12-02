@@ -11,7 +11,7 @@
 - `git` 사용이 어려우신 분은 저장소를 `*.zip` 파일로 다운로드 받으실 수 있습니다.
 
 ```
-https://github.com/bluedragonclub/bdc-client.git
+git clone https://github.com/bluedragonclub/bdc-client.git
 ```
 
 
