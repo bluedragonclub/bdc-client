@@ -264,7 +264,7 @@ def submit(console, config):
     files = []
     for fpath in FILES:
         fname = osp.basename(fpath)
-        fpath = osp.abspath(osp.join(droot, fpath))
+        # fpath = osp.abspath(osp.join(droot, fpath))
 
         if not osp.isfile(fpath):
             # raise FileNotFoundError(fpath)             
