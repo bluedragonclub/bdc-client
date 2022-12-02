@@ -53,7 +53,7 @@ conda activate bdc
 설정 파일 경로를 잘못 입력하면 오류가 발생하게 됩니다.
 
 ```bash
-(bdc) python --config "설정 파일(*.yml) 경로"
+(bdc) python submit.py --config "설정 파일(*.yml) 경로"
 ```
 
 예를 들어, 본 저장소 디렉토리 구조에서 아래와 같이 명령어를 실행할 수 있습니다.
