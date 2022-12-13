@@ -26,11 +26,20 @@ git clone https://github.com/bluedragonclub/bdc-client.git
 conda create -n bdc python=3.10
 ```
 
+
 가상환경 생성이 완료되면 아래와 같이 `conda` 명령어를 통해 가상환경을 활성화 시킬 수 있습니다.
 
 ```
 conda activate bdc
 ```
+
+
+가상환경을 활성화 시키면 아래와 같이 프롬프트에 가상환경 이름이 나타나게 됩니다.
+
+```
+(bdc) 
+```
+
 
 ### 의존 패키지 설치
 
@@ -40,11 +49,11 @@ conda activate bdc
 (bdc) conda install pip
 ```
 
-의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다. `requirements.txt`가 존재하는 `bdc-client` 저장소 내에서 다음 명령어를 실행하여 의존 패키지를 설치합니다.
+의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다. `requirements.txt`가 존재하는 `bdc-client` 저장소 디렉토리로 이동한 후 다음 명령어를 실행하여 의존 패키지를 설치합니다.
 
 ```
-(bdc) cd bdc-client
-(bdc) pip install -r requirements.txt
+(bdc) cd bdc-client  # requirements.txt 파일이 들어있는 디렉토리로 이동
+(bdc) pip install -r requirements.txt  # 의존 패키지 설치 명령어
 ```
 
 
@@ -98,3 +107,106 @@ conda activate bdc
     # - "PROBLEM_06C"
 ```
 
+
+## 자주 발생하는 오류 유형
+
+
+------------------------------------------------------------------------
+
+**오류 상황**)
+- 의존 패키지 설치 과정에서 `requirements.txt` 파일을 찾을 수 없다는 오류를 만나게 되는 경우.
+
+```bash
+(bdc) pip install -r requirements.txt
+Could not open requirements file
+No such file or directory: 'requirements.txt'
+```
+
+**해결 방법**)
+- `requirements.txt`가 들어있는 `bdc-client` 디렉토리 내로 진입 후 설치.
+
+```bash
+(bdc) cd bdc-client
+(bdc) pip install -r requirements.txt
+```
+
+
+------------------------------------------------------------------------
+
+**오류 상황**)
+- `Sign In` 과정에서 `config.yml` 파일을 찾지 못하는 경우.
+
+```bash
+(bdc) python submit.py --config cau_oop_2022/assignment01/config.yml
+
+[ERROR] No such file: cau_oop_2022/assignment_01/config.yml
+
+```
+
+**해결 방법**)
+- `config.yml`의 경로를 정확하게 기입.
+
+```bash
+(bdc) python submit.py --config cau_oop_2022/assignment_01/config.yml
+```
+
+- `config.yml`의 경로를 절대 경로로 기입.
+
+```bash
+(bdc) python submit.py --config "D:/repos/bdc-client/cau_oop_2022/assignment_01/config.yml"
+```
+
+
+------------------------------------------------------------------------
+
+**오류 상황**)
+- 들여쓰기(indentation)가 제대로 되지 않은 경우.
+- 들여쓰기가 망가지면 `yaml` 파일 형식이 제대로 인식되지 않음.
+
+```yaml
+
+"FILES":
+    - "cau_oop_2022/assignment_01/mathlib.h"
+            - "cau_oop_2022/assignment_01/mathlib.cpp"
+
+```
+
+**해결 방법**)
+- 들여쓰기를 제대로 수정.
+
+```yaml
+
+"FILES":
+    - "cau_oop_2022/assignment_01/mathlib.h"
+    - "cau_oop_2022/assignment_01/mathlib.cpp"
+
+```
+
+
+------------------------------------------------------------------------
+
+
+**오류 상황**)
+- Windows에서 실행 시 파일 경로 구분자로 `\` 를 사용하는 경우.
+- 아래 예시에서처럼 `\a`나 `\n`이 예외 문자(escape character)로 인식될 수 있음.
+- 참고로 파일 경로 내 `\n`은 개행 문자로 인식됨.
+
+
+```yaml
+"FILES":
+    - "C:\Users\dwlee\oop\assignment_01\network.h"
+    - "C:\Users\dwlee\oop\assignment_01\network.cpp"
+
+```
+
+**해결 방법**)
+- 파일 경로 구분자 `\`를 `/`로 교체 (역슬래시 대신 슬래시 사용).
+
+```yaml
+"FILES":
+    - "C:/Users/dwlee/oop/assignment_01/network.h"
+    - "C:/Users/dwlee/oop/assignment_01/network.cpp"
+
+```
+
+------------------------------------------------------------------------

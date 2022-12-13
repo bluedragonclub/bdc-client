@@ -2,6 +2,7 @@ import re
 import os.path as osp
 import argparse
 import socket
+import traceback
 
 import yaml
 import requests
@@ -320,9 +321,25 @@ if __name__ == "__main__":
             if input == "2" or input == "q":
                 break
             elif input == "1" or input == "i":    
-                args = argparser.parse_args()       
-                with open(args.fpath_config, "rt") as fin:
-                    config = yaml.safe_load(fin)
+                args = argparser.parse_args()
+                
+                if not osp.isfile(args.fpath_config):                    
+                    err_msg = "No such file: %s"%(args.fpath_config)
+                    console.print("\n[red][ERROR][/] {}".format(err_msg), end="\n\n")
+                    break
+                
+                try:
+                    with open(args.fpath_config, "rt") as fin:
+                        config = yaml.safe_load(fin)
+                except yaml.scanner.ScannerError:
+                    err_msg = "The configuration file contains "\
+                              "some invalid characters."
+                    
+                    console.print(traceback.format_exc())
+                    console.print("\n[red][ERROR][/] {}".format(err_msg), end="\n\n")
+                    break
+
+                    #raise ValueError(err_msg).with_traceback(err.__traceback__)   
 
                 student_id = menu_signin(console, config)
                 if student_id:
@@ -330,8 +347,8 @@ if __name__ == "__main__":
                     menu_main(console, config)
             else:                
                 raise RuntimeError("[SYSTEM ERROR][/] Report this error to system manager!")
-                # console.print("\n[red][ERROR][/] Wrong input: %s"%(input))
         
-            console.print()
+            console.print()   
+    
     finally:
         finish_logging()
