@@ -137,9 +137,9 @@ No such file or directory: 'requirements.txt'
 - `Sign In` 과정에서 `config.yml` 파일을 찾지 못하는 경우.
 
 ```bash
-(bdc) python submit.py --config cau_oop_2022/assignment01/config.yml
+(bdc) python submit.py --config "/Users/oop/cau_oop_2022/assignment01/config.yml
 
-[ERROR] No such file: cau_oop_2022/assignment_01/config.yml
+[ERROR] No such file: "/Users/oop/cau_oop_2022/assignment_01/config.yml
 
 ```
 
@@ -166,8 +166,8 @@ No such file or directory: 'requirements.txt'
 ```yaml
 
 "FILES":
-    - "cau_oop_2022/assignment_01/mathlib.h"
-            - "cau_oop_2022/assignment_01/mathlib.cpp"
+    - "/Users/oop/cau_oop_2022/assignment_01/mathlib.h"
+            - "/Users/oop/cau_oop_2022/assignment_01/mathlib.cpp"
 
 ```
 
@@ -177,8 +177,8 @@ No such file or directory: 'requirements.txt'
 ```yaml
 
 "FILES":
-    - "cau_oop_2022/assignment_01/mathlib.h"
-    - "cau_oop_2022/assignment_01/mathlib.cpp"
+    - "/Users/oop/cau_oop_2022/assignment_01/mathlib.h"
+    - "/Users/oop/cau_oop_2022/assignment_01/mathlib.cpp"
 
 ```
 
