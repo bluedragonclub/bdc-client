@@ -329,7 +329,7 @@ if __name__ == "__main__":
                     break
                 
                 try:
-                    with open(args.fpath_config, "rt") as fin:
+                    with open(args.fpath_config, "rt", encoding="utf-8") as fin:
                         config = yaml.safe_load(fin)
                 except yaml.scanner.ScannerError:
                     err_msg = "The configuration file contains "\
