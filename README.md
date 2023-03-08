@@ -69,7 +69,7 @@ conda activate bdc
 예를 들어, 본 저장소 디렉토리 구조에서 아래와 같이 명령어를 실행할 수 있습니다.
 
 ```bash
-(bdc) python submit.py --config /path-to-your-course/assignment_01/config.yml
+(bdc) python submit.py --config path-to-your-course/assignment_01/config.yml
 ```
 
 
