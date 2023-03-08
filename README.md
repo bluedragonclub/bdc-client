@@ -69,7 +69,7 @@ conda activate bdc
 예를 들어, 본 저장소 디렉토리 구조에서 아래와 같이 명령어를 실행할 수 있습니다.
 
 ```bash
-(bdc) python submit.py --config cau_oop_2022/assignment_01/config.yml
+(bdc) python submit.py --config /path-to-your-course/assignment_01/config.yml
 ```
 
 
@@ -88,8 +88,8 @@ conda activate bdc
 
 "ID": "20221234"  # 학번
 "FILES":  # 제출 파일의 경로 기입 (절대 경로 권장)
-    - "cau_oop_2022/assignment_01/mathlib.cpp"
-    - "cau_oop_2022/assignment_01/mathlib.h"
+    - "path-to-your-course/cau_oop_2022/assignment_01/mathlib.cpp"
+    - "path-to-your-course/cau_oop_2022/assignment_01/mathlib.h"
 "PROBLEMS":  # 채점 받고자 하는 문제 번호
     - "PROBLEM_01A"
     - "PROBLEM_01B"
