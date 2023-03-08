@@ -52,8 +52,8 @@ conda activate bdc
 의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다. `requirements.txt`가 존재하는 `bdc-client` 저장소 디렉토리로 이동한 후 다음 명령어를 실행하여 의존 패키지를 설치합니다.
 
 ```
-(bdc) cd bdc-client  # requirements.txt 파일이 들어있는 디렉토리로 이동
-(bdc) pip install -r requirements.txt  # 의존 패키지 설치 명령어
+(bdc) cd bdc-client
+(bdc) pip install -r requirements.txt
 ```
 
 
@@ -207,3 +207,13 @@ No such file or directory: 'requirements.txt'
 
 ```
 
+------------------------------------------------------------------------
+
+
+**오류 상황**)
+- Windows에서 실행 후 단축키가 제대로 동작하지 경우.
+- 단축키를 입력하면 바로 실행되어야 하는데 엔터를 입력해야 하는 경우.
+
+**해결 방법**)
+- 한컴 입력기가 입력기로 선택되어 있는 경우 입력이 원활하지 않을 수 있음.
+- 한컴 입력기를 삭제하거나, 한컴 입력기 대신 Microsoft 입력기를 사용.
