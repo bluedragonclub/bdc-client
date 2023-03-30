@@ -145,9 +145,11 @@ def menu_show_stats(console, config):
 
 def menu_main(console, config):
     student_id = config["ID"]
+
     while True:
         console.print(f"[red][[/] [#00C9FF]Blue Dragon Club[/] [#00FF00](ID: {student_id})[/] [red]][/]")
 
+        console.print(" [green]0[/]. [green]R[/]eload Configuration", highlight=False)
         console.print(" [green]1[/]. Submit [green]A[/]ssignment", highlight=False)
         console.print(" [green]2[/]. Show [green]R[/]esults", highlight=False)
         console.print(" [green]3[/]. [green]C[/]hange Password", highlight=False)
@@ -163,7 +165,7 @@ def menu_main(console, config):
 
                 input = input.strip().lower()
 
-                if input in ["1", "2", "3", "4", "a", "r", "c", "q"]:
+                if input in ["0", "1", "2", "3", "4", "a", "r", "c", "q"]:
                     break
             except UnicodeDecodeError as err:
                 flush_input()
@@ -172,7 +174,25 @@ def menu_main(console, config):
             
         console.print(input, end="\n\n", style=style_input)
 
-        if input == "1" or input == "a":
+        if input == "0" or input =="r":
+            try:
+                pw = config["PW"]
+                with open(args.fpath_config, "rt", encoding="utf-8") as fin:
+                    config = yaml.safe_load(fin)
+                    if "ID" in config and student_id != config["ID"]:
+                        raise RuntimeError("Student ID has been changed! Please sign in again.")
+                    
+                    if "PW" in config and pw != config["PW"]:
+                        raise RuntimeError("Password has been changed! Please sign in again.")
+
+                config["PW"] = pw
+            except yaml.scanner.ScannerError as err:
+                err_msg = "The configuration file contains some invalid characters."                
+                console.print(traceback.format_exc())
+                console.print("\n[red][ERROR][/] {}".format(err_msg), end="\n\n")
+                raise err
+
+        elif input == "1" or input == "a":
             submit(console, config)
         elif input == "2" or input == "r":
             menu_show_stats(console, config)
@@ -327,20 +347,17 @@ if __name__ == "__main__":
                     err_msg = "No such file: %s"%(args.fpath_config)
                     console.print("\n[red][ERROR][/] {}".format(err_msg), end="\n\n")
                     break
-                
+                                
                 try:
                     with open(args.fpath_config, "rt", encoding="utf-8") as fin:
                         config = yaml.safe_load(fin)
                 except yaml.scanner.ScannerError:
-                    err_msg = "The configuration file contains "\
-                              "some invalid characters."
+                    err_msg = "The configuration file contains some invalid characters."
                     
                     console.print(traceback.format_exc())
                     console.print("\n[red][ERROR][/] {}".format(err_msg), end="\n\n")
                     break
-
-                    #raise ValueError(err_msg).with_traceback(err.__traceback__)   
-
+                
                 student_id = menu_signin(console, config)
                 if student_id:
                     console.print()
