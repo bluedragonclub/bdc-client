@@ -151,7 +151,7 @@ def menu_main(console, config):
 
         console.print(" [green]0[/]. [green]R[/]eload Configuration", highlight=False)
         console.print(" [green]1[/]. Submit [green]A[/]ssignment", highlight=False)
-        console.print(" [green]2[/]. Show [green]R[/]esults", highlight=False)
+        console.print(" [green]2[/]. [green]S[/]how Results", highlight=False)
         console.print(" [green]3[/]. [green]C[/]hange Password", highlight=False)
         console.print(" [green]4[/]. [green]Q[/]uit", highlight=False)
         console.print("Select: ", end="", highlight=False)
@@ -165,7 +165,7 @@ def menu_main(console, config):
 
                 input = input.strip().lower()
 
-                if input in ["0", "1", "2", "3", "4", "a", "r", "c", "q"]:
+                if input in ["0", "1", "2", "3", "4", "r", "a", "s", "c", "q"]:
                     break
             except UnicodeDecodeError as err:
                 flush_input()
@@ -194,7 +194,7 @@ def menu_main(console, config):
 
         elif input == "1" or input == "a":
             submit(console, config)
-        elif input == "2" or input == "r":
+        elif input == "2" or input == "s":
             menu_show_stats(console, config)
         elif input == "3" or input == "c":
             menu_update_pw(console, config)
