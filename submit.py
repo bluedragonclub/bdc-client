@@ -260,6 +260,15 @@ def submit(console, config):
         console.print(err_msg)
         return
 
+    try:
+        ip_address = socket.gethostbyname(socket.gethostname())
+    except Exception as err:
+        ip_address = ""
+        
+    try:
+        hostname = socket.gethostname()
+    except Exception as err:
+        hostname = ""
 
     submission = {
         "student_id": config["ID"],
@@ -267,8 +276,8 @@ def submit(console, config):
         "course_id": config["COURSE"],
         "assignment_id": config["ASSIGNMENT"],
         "problems": config["PROBLEMS"],
-        "ip_address": socket.gethostbyname(socket.gethostname()),
-        "hostname": socket.gethostname()
+        "ip_address": ip_address,
+        "hostname": hostname
     }
 
     # Check and collect files.
