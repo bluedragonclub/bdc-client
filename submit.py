@@ -299,7 +299,7 @@ def submit(console, config):
             return
 
         _, ext = osp.splitext(fname)
-        if ext not in [".py", ".cpp", ".c"]:            
+        if ext not in [".py", ".cpp", ".c", ".h"]:            
             console.print("\n[red][ERROR][/] Invalid source file format:\n ▶ {}".format(fpath))
             return
 
