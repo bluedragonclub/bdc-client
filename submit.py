@@ -80,7 +80,6 @@ def menu_signin(console, config):
 
     config["ID"] = student_id
     config["PW"] = pw
-    #console.print()
 
     return student_id
 
@@ -294,11 +293,14 @@ def submit(console, config):
     files = []
     for fpath in FILES:
         fname = osp.basename(fpath)
-        # fpath = osp.abspath(osp.join(droot, fpath))
 
         if not osp.isfile(fpath):
-            # raise FileNotFoundError(fpath)             
             console.print("\n[red][ERROR][/] File not found:\n ▶ {}".format(fpath))
+            return
+
+        _, ext = osp.splitext(fname)
+        if ext not in [".py", ".cpp", ".c"]:            
+            console.print("\n[red][ERROR][/] Invalid source file format:\n ▶ {}".format(fpath))
             return
 
         files.append(
