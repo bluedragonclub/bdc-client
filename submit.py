@@ -190,6 +190,9 @@ def menu_main(console, config):
                 console.print(traceback.format_exc())
                 console.print("\n[red][ERROR][/] {}".format(err_msg), end="\n\n")
                 raise err
+            
+            console.print("\n[#00FF00]Configuration reloaded successfully![/]")    
+
 
         elif input == "1" or input == "a":
             submit(console, config)

@@ -49,17 +49,24 @@ conda activate bdc
 (bdc) conda install pip
 ```
 
-의존 패키지는 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다. `requirements.txt`가 존재하는 `bdc-client` 저장소 디렉토리로 이동한 후 다음 명령어를 실행하여 의존 패키지를 설치합니다.
+CLI 클라이언트를 이용하기 위해 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 의존 패키지를 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다. `requirements.txt`가 존재하는 `bdc-client` 저장소 디렉토리로 이동한 후 다음 명령어를 실행하여 의존 패키지를 설치합니다.
 
 ```
 (bdc) cd bdc-client
 (bdc) pip install -r requirements.txt
 ```
 
+GUI 클라이언트를 이용하고자 하는 경우 아래와 같이 `requirements_gui.txt`에 정의된 의존 패키지를 설치합니다.
+
+```
+(bdc) cd bdc-client
+(bdc) pip install -r requirements_gui.txt
+```
+
 
 ## 클라이언트 실행
 
-제출하고자 하는 과제의 `config.yml` 파일을 수정한 후 아래와 같은 명령어를 입력하여 클라이언트를 실행할 수 있습니다.
+제출하고자 하는 과제의 `config.yml` 파일을 수정한 후 아래와 같은 명령어를 입력하여 CLI 클라이언트를 실행할 수 있습니다.
 설정 파일 경로를 잘못 입력하면 오류가 발생하게 됩니다.
 
 ```bash
@@ -72,6 +79,11 @@ conda activate bdc
 (bdc) python submit.py --config path-to-your-course/assignment_01/config.yml
 ```
 
+GUI 클라이언트를 이용하고자 하는 경우 아래와 같이 커맨드를 입력합니다.
+
+```bash
+(bdc) python submit_gui.py
+```
 
 ## 설정 파일 수정
 
