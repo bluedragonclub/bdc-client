@@ -266,7 +266,8 @@ class Dialog(QDialog):
             item = self.ui.tableWidget_problems.item(i, 0)
             if item:
                 problem_id = str(item.text())
-                config["PROBLEMS"].append(problem_id)
+                if problem_id:
+                    config["PROBLEMS"].append(problem_id)
 
 
         return config
@@ -431,7 +432,7 @@ def main():
     app = QApplication(sys.argv)
     widget = Dialog()
 
-    icon = QIcon("gui/icon.png")
+    icon = QIcon("icon.png")
     widget.setWindowIcon(icon)  # for Windows and Linux
     app.setWindowIcon(icon)
 
