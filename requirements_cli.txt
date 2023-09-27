@@ -1,0 +1,4 @@
+pyyaml
+requests
+py-getch
+rich
