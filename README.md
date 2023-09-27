@@ -1,6 +1,4 @@
-# A client
-
-<img src="assets/logo.png" alt="Drawing" width="395px"/>
+<img src="assets/logo.png" alt="Drawing" width="700px"/>
 
 ## 소개
 - 중앙대학교 예술공학대학의 블루드래곤클럽(BlueDragonClub, BDC)을 이용하기 위한 클라이언트입니다.
