@@ -31,8 +31,6 @@ import utils
 from utils import flush_input
 from utils import uformat
 
-raw = b"aHR0cDovLzE2NS4xOTQuMTY0Ljg2OjEwMDAxL3t9"
-
 
 def colorize_log(log):
     log = re.sub('\[Problem (.+)\] (.+)\n', '<span style=\"color: #0048ff;\">[Problem \\1] \\2</span>\n', log)
@@ -402,7 +400,7 @@ class Dialog(QDialog):
         # end of for
 
         # Submit the files with the meta-information.
-        response = requests.post(uformat(raw, b"c3VibWl0"), data=submission, files=files)
+        response = requests.post(uformat(config, b"c3VibWl0"), data=submission, files=files)
         res = utils.to_json(response)
 
         if "error" in res:

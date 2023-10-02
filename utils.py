@@ -6,6 +6,7 @@ _stream_handler = None
 _file_handler = None
 _handlers = []
 
+
 def get_logger():
     global logger
     return logger
@@ -95,7 +96,21 @@ def flush_input():
 def decode(s):
     return base64.b64decode(s).decode()
 
-def uformat(raw, ep):
+def encode(s):
+    return base64.b64encode(s.encode())
+
+def uformat(config, ep):    
+
+    raw_1 = b"aHR0cDovLzE2NS4xOTQuMTY0Ljg2OjEwMDAxL3t9"
+    raw_2 = b"aHR0cDovLzE2NS4xOTQuMTY0Ljg2OjEwMDAyL3t9"
+    
+    course_id = config["COURSE"]
+    
+    if "OOP" in course_id or "DRALG" in course_id:
+        raw = raw_1
+    elif "AIML" in course_id:
+        raw = raw_2    
+    
     return decode(raw).format(decode(ep))
 
 
