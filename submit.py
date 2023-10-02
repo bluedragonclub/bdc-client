@@ -16,9 +16,14 @@ from utils import flush_input
 from utils import uformat
 
 
-raw = b"aHR0cDovLzE2NS4xOTQuMTY0Ljg2OjEwMDAxL3t9"
 style_input = Style(color="green", bold=True)
 style_menu = Style(color="white")
+
+
+def route():
+
+
+
 
 def menu_start(console):
     
@@ -68,8 +73,19 @@ def menu_signin(console, config):
         "name": "",
         "group": 0
     }
+       
+    # Check course ID.
+    err_msg = "\n[red][ERROR][/] You must define course ID!"
+    if "COURSE" in config:
+        COURSE = config["COURSE"]
+        if not COURSE or not isinstance(COURSE, str):
+            console.print(err_msg)
+            return False
+    else:
+        console.print(err_msg)
+        return False
 
-    response = requests.post(uformat(raw, b"c2lnbmlu"), json=student)
+    response = requests.post(uformat(config, b"c2lnbmlu"), json=student)
     res = utils.to_json(response)
     if "error" in res and "result" not in res:
         console.print("\n[red][ERROR][/] {}".format(res["error"]))
@@ -104,7 +120,7 @@ def menu_update_pw(console, config):
         "group": 0
     }
 
-    response = requests.post(uformat(raw, b"dXBkYXRl"), json=student)
+    response = requests.post(uformat(config, b"dXBkYXRl"), json=student)
     res = utils.to_json(response)
     
     if "error" in res and "result" not in res:
@@ -126,7 +142,7 @@ def menu_show_stats(console, config):
     student = {
         "student_id": student_id,
     }
-    response = requests.get(uformat(raw, b"cmVzdWx0cw=="), params=student)
+    response = requests.get(uformat(config, b"cmVzdWx0cw=="), params=student)
     res = utils.to_json(response)
 
     if "error" in res and "result" not in res:
@@ -312,7 +328,7 @@ def submit(console, config):
     # end of for
 
     # Submit the files with the meta-information.
-    response = requests.post(uformat(raw, b"c3VibWl0"), data=submission, files=files)    
+    response = requests.post(uformat(config, b"c3VibWl0"), data=submission, files=files)    
     res = utils.to_json(response)
 
     if "error" in res:
