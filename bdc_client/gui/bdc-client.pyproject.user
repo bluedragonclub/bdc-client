@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 11.0.2, 2023-09-25T21:34:46. -->
+<!-- Written by QtCreator 11.0.2, 2023-10-02T16:57:34. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -162,10 +162,8 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">ui_form.py2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/gui/ui_form.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/gui/ui_form.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\gui\ui_form.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/gui</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
   </valuemap>

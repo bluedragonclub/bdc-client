@@ -20,11 +20,6 @@ style_input = Style(color="green", bold=True)
 style_menu = Style(color="white")
 
 
-def route():
-
-
-
-
 def menu_start(console):
     
     console.print(" [green]1[/]. Sign [green]I[/]n", highlight=False)
