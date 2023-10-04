@@ -1,7 +1,11 @@
 {
     "files": [
         "../../submit_gui.py",
-        "form.ui",
-        "ui_form.py"
+        "../app.py",
+        "change_password_dialog.py",
+        "change_password_dialog.ui",
+        "main_dialog.ui",
+        "ui_change_password_dialog.py",
+        "ui_main_dialog.py"
     ]
 }

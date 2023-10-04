@@ -26,7 +26,8 @@ from PySide6.QtGui import QKeySequence
 from PySide6.QtGui import QIcon
 
 
-from bdc_client.gui.ui_form import Ui_Dialog
+from bdc_client.gui.ui_main_dialog import Ui_Dialog
+from bdc_client.gui.change_password_dialog import ChangePasswordDialog
 import utils
 from utils import flush_input
 from utils import uformat
@@ -39,13 +40,13 @@ def colorize_log(log):
     log = re.sub('\[Problem (.+)\] (.+)\n', '<span style=\"color: #0048ff;\">[Problem \\1] \\2</span>\n', log)
 
     log = re.sub('All tests have been passed! \[(.+)pts]\n',
-                 '<span style=\"color: #00BA00;\">All tests have been passed! [\\1pts]</span>\n',
+                 '<span style=\"color: #009600;\">All tests have been passed! [\\1pts]</span>\n',
                  log)
 
-    log = log.replace("[ERROR]", "<span style=\"color: red;\">[ERROR]</span>")
-    log = log.replace("[FAILED]", "<span style=\"color: red;\">[FAILED]</span>")
-    log = log.replace("[MEMORY LEAK]", "<span style=\"color: red;\">[MEMORY LEAK]</span>")
-    log = log.replace("100 / 100", "<span style=\"color: #00BA00;\">100 / 100</span>")
+    log = log.replace("[ERROR]", '<span style=\"color: red;\">[ERROR]</span>')
+    log = log.replace("[FAILED]", '<span style=\"color: red;\">[FAILED]</span>')
+    log = log.replace("[MEMORY LEAK]", '<span style=\"color: red;\">[MEMORY LEAK]</span>')
+    # log = log.replace("100 / 100", '<span style=\"color: #009600;\">100 / 100</span>')
     return log
 
 def show_error_msg(title, err_msg):
@@ -69,21 +70,24 @@ class Dialog(QDialog):
         # Initialize the buttons.
         self.ui.pushButton_openConfig.clicked.connect(self.open_config_clicked)
         self.ui.pushButton_exportConfig.clicked.connect(self.export_config_clicked)
+
+        self.ui.pushButton_changePassword.clicked.connect(self.change_password_clicked)
+
         self.ui.pushButton_openFiles.clicked.connect(self.open_files_clicked)
         self.ui.pushButton_submitFiles.clicked.connect(self.submit_files_clicked)
 
+        self.ui.pushButton_showResults.clicked.connect(self.show_results_clicked)
 
         self.ui.pushButton_openConfig.setShortcut("Ctrl+O")
         self.ui.pushButton_exportConfig.setShortcut("Ctrl+E")
-        self.ui.pushButton_submitFiles.setShortcut("Ctrl+S")
+        self.ui.pushButton_changePassword.setShortcut("Ctrl+C")
         self.ui.pushButton_openFiles.setShortcut("Ctrl+F")
+        self.ui.pushButton_submitFiles.setShortcut("Ctrl+S")
+        self.ui.pushButton_showResults.setShortcut("Ctrl+R")
 
 
         # Initialize the line edits.
         self.ui.lineEdit_id.setInputMask("00000000")
-        #self.ui.lineEdit_id.setText("00000000")
-
-
         self.ui.lineEdit_pw.setEchoMode(QLineEdit.Password)
 
         # Initialize the TableWidget for Problems
@@ -103,6 +107,11 @@ class Dialog(QDialog):
         header = self.ui.tableWidget_files.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
         header.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+
+        # Create the change password dialog.
+        self.change_password_dialog = ChangePasswordDialog()
+
+
 
     def open_config_clicked(self):
         try:
@@ -126,19 +135,13 @@ class Dialog(QDialog):
 
             # Update the widgets.
             self.ui.lineEdit_config.setText(fpath)
-
             self.update_config(fpath)
-            # self.ui.lineEdit_course
-            # self.ui.lineEdit_id
-            # self.ui.lineEdit_assignment
-
 
         except Exception as err:
-            print(err)
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setWindowTitle("Open a configuration file")
-            msg.setText("Invalid file type or file contents:\n\n%s"%(traceback.format_exc()))
+            msg.setText("%s"%(err))
             msg.exec()
         # end of except
 
@@ -212,6 +215,55 @@ class Dialog(QDialog):
         with open(fpath, "wt") as fout:
             yaml.dump(config, fout) #, encoding=('utf-8'))
 
+    def change_password_clicked(self):
+        self.change_password_dialog.clear()
+        ans = self.change_password_dialog.exec()
+
+        if ans == QDialog.Accepted:
+            pw_new = self.change_password_dialog.ui.lineEdit_newPw.text()
+            pw_confirm = self.change_password_dialog.ui.lineEdit_confirmPw.text()
+
+            if pw_new != pw_confirm:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Critical)
+                msg.setWindowTitle("Error in changing password")
+                msg.setText("The new password and confirmation do not match!")
+                msg.exec()
+                return
+
+            # Process update the password.
+            student_id = self.ui.lineEdit_id.text()
+            pw_old = self.change_password_dialog.ui.lineEdit_currentPw.text()
+
+            student = {
+                "id": student_id,
+                "pw": pw_old,
+                "pw_new": pw_new,
+                "name": "",
+                "group": 0
+            }
+
+            try:
+                config = self.get_config_from_gui()
+                config["PW"] = pw_old
+
+                response = requests.post(uformat(config, b"dXBkYXRl"), json=student)
+                res = utils.to_json(response)
+
+                if "error" in res:
+                    show_error_msg("Error in changing password", res["error"])
+                elif "result" in res:
+                    # res["result"] == student_id
+                    self.write_log('\n<span style=\"color: blue;\">Password updated successfully!</span>')
+
+            except Exception as err:
+                print(err)
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Critical)
+                msg.setWindowTitle("Error in changing password")
+                msg.setText("%s"%(traceback.format_exc()))
+                msg.exec()
+            # end of except
 
     def open_files_clicked(self):
         try:
@@ -235,7 +287,7 @@ class Dialog(QDialog):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setWindowTitle("Open source codes")
-            msg.setText("Invalid file type or file contents:\n\n%s"%(traceback.format_exc()))
+            msg.setText("Invalid file type or file contents:\n\n%s"%(err))
             msg.exec()
         # end of except
 
@@ -274,18 +326,22 @@ class Dialog(QDialog):
         return config
 
 
-    def write_log(self, str_log, clear=True):
+    def write_log(self, log, clear=True):
         if clear:
             self.ui.textBrowser_syslog.clear()
 
+        self.ui.textBrowser_syslog.insertHtml('<span style=\"color: black;\"></span>')
         str_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        str_log = colorize_log(str_log)
-        # self.ui.textBrowser_syslog.insertPlainText(str_log)
-        # self.ui.textBrowser_syslog.append(str_log)
+        str_logging_time = "[Log time] %s\n"%(str_now)
+        self.ui.textBrowser_syslog.insertPlainText(str_logging_time)
 
-        self.ui.textBrowser_syslog.insertPlainText("[Log time] %s\n"%(str_now))
-
-        lines = str_log.split('\n')
+        if isinstance(log, str):
+            str_log = colorize_log(log)
+            lines = str_log.split('\n')
+        elif isinstance(log, list):
+            lines = []
+            for line in log:
+                lines.append(colorize_log(line))
 
         for line in lines:
             self.ui.textBrowser_syslog.insertHtml(line)
@@ -384,7 +440,6 @@ class Dialog(QDialog):
         files = []
         for fpath in FILES:
             fname = osp.basename(fpath)
-            print(fpath)
 
             if not osp.isfile(fpath):
                 err_msg = "File not found:\n{}".format(fpath)
@@ -423,6 +478,45 @@ class Dialog(QDialog):
         self.submit(config)
 
         self.ui.textBrowser_syslog.moveCursor(QTextCursor.End)
+
+
+    def show_results_clicked(self):
+        config = self.get_config_from_gui()
+
+        # Check student password.
+        err_msg = "You must insert Password!"
+        if "PW" in config:
+            PW = config["PW"]
+            if not PW or not isinstance(PW, str):
+                show_error_msg("Show results", err_msg)
+                return
+        else:
+            show_error_msg("Show results", err_msg)
+            return
+
+
+        student_id = str(config["ID"])
+
+        # Process show the results.
+        student = {
+            "student_id": student_id,
+        }
+        response = requests.get(uformat(config, b"cmVzdWx0cw=="), params=student)
+        res = utils.to_json(response)
+
+        if "error" in res and "result" not in res:
+            self.write_log("\n[ERROR] {}".format(res["error"]))
+            return
+
+        logs = []
+        logs.append('Current Results')
+
+        fstr = '- [<span style=\"color: blue;\">{}</span>] Total Score: {} / 100'
+        # fstr = '- [{}] Total Score: {} / 100'
+        for assignment_id, total_score in res["result"].items():
+            logs.append(fstr.format(assignment_id, total_score))
+
+        self.write_log(logs)
 
 
 def main():
