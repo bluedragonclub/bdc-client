@@ -512,7 +512,6 @@ class Dialog(QDialog):
         logs.append('Current Results')
 
         fstr = '- [<span style=\"color: blue;\">{}</span>] Total Score: {} / 100'
-        # fstr = '- [{}] Total Score: {} / 100'
         for assignment_id, total_score in res["result"].items():
             logs.append(fstr.format(assignment_id, total_score))
 
