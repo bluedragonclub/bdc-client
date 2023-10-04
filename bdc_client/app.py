@@ -351,7 +351,7 @@ class Dialog(QDialog):
     def submit(self, config):
 
         # Check student ID.
-        err_msg = "You must insert Student ID!"
+        err_msg = "You must insert ID!"
         if "ID" in config:
             ID = config["ID"]
             if not ID or not isinstance(ID, str):
@@ -483,6 +483,17 @@ class Dialog(QDialog):
     def show_results_clicked(self):
         config = self.get_config_from_gui()
 
+        # Check student ID.
+        err_msg = "You must insert ID!"
+        if "ID" in config:
+            ID = config["ID"]
+            if not ID or not isinstance(ID, str):
+                show_error_msg("Submission", err_msg)
+                return
+        else:
+            show_error_msg("Submission", err_msg)
+            return
+        
         # Check student password.
         err_msg = "You must insert Password!"
         if "PW" in config:
