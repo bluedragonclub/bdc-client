@@ -16,6 +16,9 @@ from utils import flush_input
 from utils import uformat
 
 
+yaml.reader.Reader.NON_PRINTABLE = re.compile('[^\t\n\r -�-\U0010ffff]')
+
+
 style_input = Style(color="green", bold=True)
 style_menu = Style(color="white")
 
