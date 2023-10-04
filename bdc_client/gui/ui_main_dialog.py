@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'form.ui'
+## Form generated from reading UI file 'main_dialog.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.2
 ##
@@ -111,6 +111,23 @@ class Ui_Dialog(object):
 
         self.verticalLayout_3.addWidget(self.textBrowser_syslog)
 
+        self.gridLayout_3 = QGridLayout()
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.pushButton_showResults = QPushButton(self.groupBox_systemlog)
+        self.pushButton_showResults.setObjectName(u"pushButton_showResults")
+        self.pushButton_showResults.setMinimumSize(QSize(90, 24))
+        self.pushButton_showResults.setMaximumSize(QSize(16777215, 90))
+        self.pushButton_showResults.setFont(font1)
+
+        self.gridLayout_3.addWidget(self.pushButton_showResults, 0, 1, 1, 1)
+
+        self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_3, 0, 0, 1, 1)
+
+
+        self.verticalLayout_3.addLayout(self.gridLayout_3)
+
 
         self.gridLayout.addWidget(self.groupBox_systemlog, 0, 1, 4, 1)
 
@@ -173,7 +190,7 @@ class Ui_Dialog(object):
         self.pushButton_exportConfig = QPushButton(self.groupBox)
         self.pushButton_exportConfig.setObjectName(u"pushButton_exportConfig")
         self.pushButton_exportConfig.setMinimumSize(QSize(0, 24))
-        self.pushButton_exportConfig.setFont(font)
+        self.pushButton_exportConfig.setFont(font1)
 
         self.horizontalLayout_4.addWidget(self.pushButton_exportConfig)
 
@@ -217,6 +234,13 @@ class Ui_Dialog(object):
         self.lineEdit_pw.setFont(font)
 
         self.horizontalLayout_2.addWidget(self.lineEdit_pw)
+
+        self.pushButton_changePassword = QPushButton(self.groupBox)
+        self.pushButton_changePassword.setObjectName(u"pushButton_changePassword")
+        self.pushButton_changePassword.setMinimumSize(QSize(0, 24))
+        self.pushButton_changePassword.setFont(font1)
+
+        self.horizontalLayout_2.addWidget(self.pushButton_changePassword)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -286,6 +310,7 @@ class Ui_Dialog(object):
         self.pushButton_openFiles.setText(QCoreApplication.translate("Dialog", u"Open", None))
         self.pushButton_submitFiles.setText(QCoreApplication.translate("Dialog", u"Submit", None))
         self.groupBox_systemlog.setTitle(QCoreApplication.translate("Dialog", u"System log", None))
+        self.pushButton_showResults.setText(QCoreApplication.translate("Dialog", u"Show Results", None))
         self.groupBox_problems.setTitle(QCoreApplication.translate("Dialog", u"Problems", None))
         self.groupBox.setTitle(QCoreApplication.translate("Dialog", u"Configuration", None))
         self.label_6.setText(QCoreApplication.translate("Dialog", u"File:", None))
@@ -293,6 +318,7 @@ class Ui_Dialog(object):
         self.pushButton_exportConfig.setText(QCoreApplication.translate("Dialog", u"Export", None))
         self.label_id.setText(QCoreApplication.translate("Dialog", u"ID:", None))
         self.label_pw.setText(QCoreApplication.translate("Dialog", u"PW:", None))
+        self.pushButton_changePassword.setText(QCoreApplication.translate("Dialog", u"Change", None))
         self.label_4.setText(QCoreApplication.translate("Dialog", u"Course", None))
         self.label_3.setText(QCoreApplication.translate("Dialog", u"Assignment:", None))
     # retranslateUi
