@@ -49,11 +49,11 @@ conda activate bdc
 (bdc) conda install pip
 ```
 
-CLI 클라이언트를 이용하기 위해 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 의존 패키지를 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements.txt`에서 참고하시기 바랍니다. `requirements.txt`가 존재하는 `bdc-client` 저장소 디렉토리로 이동한 후 다음 명령어를 실행하여 의존 패키지를 설치합니다.
+CLI 클라이언트를 이용하기 위해 다음과 같이 `pip` 명령어의 `-r` 옵션을 이용하여 의존 패키지를 일괄적으로 설치할 수 있습니다. 의존 패키지가 궁금하신 분은 `requirements_cli.txt`에서 참고하시기 바랍니다. `requirements_cli.txt`가 존재하는 `bdc-client` 저장소 디렉토리로 이동한 후 다음 명령어를 실행하여 의존 패키지를 설치합니다.
 
 ```
 (bdc) cd bdc-client
-(bdc) pip install -r requirements.txt
+(bdc) pip install -r requirements_cli.txt
 ```
 
 GUI 클라이언트를 이용하고자 하는 경우 아래와 같이 `requirements_gui.txt`에 정의된 의존 패키지를 설치합니다.
@@ -124,20 +124,20 @@ GUI 클라이언트를 이용하고자 하는 경우 아래와 같이 커맨드�
 
 
 **오류 상황**)
-- 의존 패키지 설치 과정에서 `requirements.txt` 파일을 찾을 수 없다는 오류를 만나게 되는 경우.
+- 의존 패키지 설치 과정에서 `requirements_cli.txt` 파일을 찾을 수 없다는 오류를 만나게 되는 경우.
 
 ```bash
-(bdc) pip install -r requirements.txt
+(bdc) pip install -r requirements_cli.txt
 Could not open requirements file
-No such file or directory: 'requirements.txt'
+No such file or directory: 'requirements_cli.txt'
 ```
 
 **해결 방법**)
-- `requirements.txt`가 들어있는 `bdc-client` 디렉토리 내로 진입 후 설치.
+- `requirements_cli.txt`가 들어있는 `bdc-client` 디렉토리 내로 진입 후 설치.
 
 ```bash
 (bdc) cd bdc-client
-(bdc) pip install -r requirements.txt
+(bdc) pip install -r requirements_cli.txt
 ```
 
 
