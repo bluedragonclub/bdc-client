@@ -105,6 +105,10 @@ def menu_update_pw(console, config):
     pw_new = console.input("- New password: ", password=True)
     pw_new_confirm = console.input("- Retype new password: ", password=True)
 
+    if len(pw_new) < 4:
+        console.print("\n[red][ERROR][/] {}".format("The length of new password should be greater than 3!"))
+        return
+
     if pw_new != pw_new_confirm:
         console.print("\n[red][ERROR][/] {}".format("The inputs for new password do not match!"))
         return
