@@ -223,12 +223,14 @@ class Dialog(QDialog):
             pw_new = self.change_password_dialog.ui.lineEdit_newPw.text()
             pw_confirm = self.change_password_dialog.ui.lineEdit_confirmPw.text()
 
+            if len(pw_new) < 4:
+                err_msg = "The length of new password should be greater than 3."
+                show_error_msg("Error in changing password", err_msg)
+                return
+
             if pw_new != pw_confirm:
-                msg = QMessageBox()
-                msg.setIcon(QMessageBox.Critical)
-                msg.setWindowTitle("Error in changing password")
-                msg.setText("The new password and confirmation do not match!")
-                msg.exec()
+                err_msg = "The new password and confirmation do not match!"
+                show_error_msg("Error in changing password", err_msg)
                 return
 
             # Process update the password.
