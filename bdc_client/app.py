@@ -449,7 +449,7 @@ class Dialog(QDialog):
                 return
 
             _, ext = osp.splitext(fname)
-            if ext not in [".py", ".cpp", ".c", ".h"]:
+            if ext not in [".py", ".cpp", ".cc", ".c", ".h", ".hpp", ".csv"]:
                 err_msg = "Invalid source file format:\n ▶ {}".format(fpath)
                 show_error_msg("Submission", err_msg)
                 return
