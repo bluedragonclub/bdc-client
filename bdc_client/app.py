@@ -272,13 +272,13 @@ class Dialog(QDialog):
             dialog = QFileDialog(self)
             dialog.setWindowTitle("Open source codes")
             dialog.setAcceptMode(QFileDialog.AcceptOpen)
-            dialog.setNameFilters(["Source codes (*.py *.cpp *.h *.cc *.hpp)"])
+            dialog.setNameFilters(["Source codes (*.py *.cpp *.h *.cc *.hpp *.csv)"])
             dialog.setFileMode(QFileDialog.ExistingFile)
 
             fpaths, _ = dialog.getOpenFileNames(
                 None,
                 "Open source codes",
-                filter="Source codes (*.py *.cpp *.h *.cc *.hpp)"
+                filter="Source codes (*.py *.cpp *.h *.cc *.hpp *.csv)"
             )
 
             if not fpaths:
@@ -296,6 +296,7 @@ class Dialog(QDialog):
         self.ui.tableWidget_files.clear()
         for i, fpath in enumerate(fpaths):
             self.ui.tableWidget_files.setItem(i, 0, QTableWidgetItem(fpath))
+            print(fpath)
 
     def get_config_from_gui(self):
         config = {}
@@ -311,15 +312,19 @@ class Dialog(QDialog):
 
         for i in range(self.ui.tableWidget_files.rowCount()):
             item = self.ui.tableWidget_files.item(i, 0)
-            if item:
+            print("[get_config_from_gui] item:", item.text())
+            item_text = item.text() if item else None
+            if item and item_text:
                 # fpath = item.text()
                 fpath = str(Path(item.text()).absolute())
+                print("[get_config_from_gui] fpath:", fpath)
                 config["FILES"].append(fpath)
 
 
         for i in range(self.ui.tableWidget_problems.rowCount()):
             item = self.ui.tableWidget_problems.item(i, 0)
-            if item:
+            item_text = item.text() if item else None
+            if item and item_text:
                 problem_id = str(item.text())
                 if problem_id:
                     config["PROBLEMS"].append(problem_id)
@@ -442,6 +447,8 @@ class Dialog(QDialog):
         files = []
         for fpath in FILES:
             fname = osp.basename(fpath)
+
+            # print("[sumit()]", fpath)
 
             if not osp.isfile(fpath):
                 err_msg = "File not found:\n{}".format(fpath)
