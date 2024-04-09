@@ -1,5 +1,11 @@
 import base64
 import logging
+import codecs 
+from io import StringIO
+
+import yaml
+from yaml.scanner import ScannerError
+
 
 logger = None
 _stream_handler = None
@@ -121,3 +127,16 @@ def to_json(response):
         raise RuntimeError("[SYSTEM ERROR] %s"%(response))
     
     return res
+
+
+def read_config(fpath):
+    with codecs.open(fpath, 'r', encoding='utf-8') as fin:      
+        list_lines = []        
+        for line in fin:            
+            line = line.replace('\\', '/')
+            list_lines.append(line)
+            
+    with StringIO(''.join(list_lines)) as sin:
+        config = yaml.safe_load(sin)               
+        
+    return config

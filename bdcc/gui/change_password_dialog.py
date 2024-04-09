@@ -10,10 +10,10 @@ from PySide6.QtGui import QKeySequence
 from PySide6.QtGui import QIcon
 
 
-from bdc_client.gui.ui_change_password_dialog import Ui_Dialog
-import utils
-from utils import flush_input
-from utils import uformat
+from bdcc.gui.ui_change_password_dialog import Ui_Dialog
+from bdcc.utils import to_json
+from bdcc.utils import flush_input
+from bdcc.utils import uformat
 
 class ChangePasswordDialog(QDialog):
     def __init__(self, parent=None):

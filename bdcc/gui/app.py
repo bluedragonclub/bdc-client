@@ -26,11 +26,12 @@ from PySide6.QtGui import QKeySequence
 from PySide6.QtGui import QIcon
 
 
-from bdc_client.gui.ui_main_dialog import Ui_Dialog
-from bdc_client.gui.change_password_dialog import ChangePasswordDialog
-import utils
-from utils import flush_input
-from utils import uformat
+from bdcc.gui.ui_main_dialog import Ui_Dialog
+from bdcc.gui.change_password_dialog import ChangePasswordDialog
+from bdcc.utils import to_json
+from bdcc.utils import flush_input
+from bdcc.utils import uformat
+from bdcc.utils import read_config
 
 
 yaml.reader.Reader.NON_PRINTABLE = re.compile('[^\t\n\r -�-\U0010ffff]')
@@ -146,31 +147,9 @@ class Dialog(QDialog):
         # end of except
 
     def update_config(self, fpath):
+        
         try:
-            with open(fpath, "rt", encoding="utf-8") as fin:
-                config = yaml.safe_load(fin)
-
-                str_id = config.get("ID", "")
-                str_pw = config.get("PW", "")
-
-                str_course = config.get("COURSE", "")
-                str_assignment = config.get("ASSIGNMENT", "")
-
-                list_problems = config.get("PROBLEMS", [])
-                list_files = config.get("FILES", [])
-
-                self.ui.lineEdit_id.setText(str_id)
-                self.ui.lineEdit_pw.setText(str_pw)
-                self.ui.lineEdit_course.setText(str_course)
-                self.ui.lineEdit_assignment.setText(str_assignment)
-
-                for i, problem in enumerate(list_problems):
-                    self.ui.tableWidget_problems.setItem(i, 0, QTableWidgetItem(problem))
-
-                for i, fpath in enumerate(list_files):
-                    self.ui.tableWidget_files.setItem(i, 0, QTableWidgetItem(fpath))
-            # end of with
-
+            config = read_config(fpath)
         except yaml.scanner.ScannerError as err:
             print(err)
             msg = QMessageBox()
@@ -178,6 +157,30 @@ class Dialog(QDialog):
             msg.setWindowTitle("Open a configuration file")
             msg.setText("The configuration file contains some invalid characters.\n\n%s"%(traceback.format_exc()))
             msg.exec()
+        
+        
+        str_id = config.get("ID", "")
+        str_pw = config.get("PW", "")
+
+        str_course = config.get("COURSE", "")
+        str_assignment = config.get("ASSIGNMENT", "")
+
+        list_problems = config.get("PROBLEMS", [])
+        list_files = config.get("FILES", [])
+
+        self.ui.lineEdit_id.setText(str_id)
+        self.ui.lineEdit_pw.setText(str_pw)
+        self.ui.lineEdit_course.setText(str_course)
+        self.ui.lineEdit_assignment.setText(str_assignment)
+
+        for i, problem in enumerate(list_problems):
+            self.ui.tableWidget_problems.setItem(i, 0, QTableWidgetItem(problem))
+
+        for i, fpath in enumerate(list_files):
+            self.ui.tableWidget_files.setItem(i, 0, QTableWidgetItem(fpath))
+
+
+
 
     def export_config_clicked(self):
         try:
@@ -250,14 +253,18 @@ class Dialog(QDialog):
                 config["PW"] = pw_old
 
                 response = requests.post(uformat(config, b"dXBkYXRl"), json=student)
-                res = utils.to_json(response)
+                res = to_json(response)
 
                 if "error" in res:
                     show_error_msg("Error in changing password", res["error"])
                 elif "result" in res:
                     # res["result"] == student_id
                     self.write_log('\n<span style=\"color: blue;\">Password updated successfully!</span>')
-
+                    
+                    config["PW"] = pw_new
+                    self.ui.lineEdit_pw.setText(pw_new)
+                    
+                    
             except Exception as err:
                 print(err)
                 msg = QMessageBox()
@@ -462,7 +469,7 @@ class Dialog(QDialog):
 
         # Submit the files with the meta-information.
         response = requests.post(uformat(config, b"c3VibWl0"), data=submission, files=files)
-        res = utils.to_json(response)
+        res = to_json(response)
 
         if "error" in res:
             self.write_log("\n[ERROR] {}".format(res["error"]))
@@ -516,7 +523,7 @@ class Dialog(QDialog):
             "student_id": student_id,
         }
         response = requests.get(uformat(config, b"cmVzdWx0cw=="), params=student)
-        res = utils.to_json(response)
+        res = to_json(response)
 
         if "error" in res and "result" not in res:
             self.write_log("\n[ERROR] {}".format(res["error"]))

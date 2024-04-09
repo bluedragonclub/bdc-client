@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 
 
-with open("bdc_client/VERSION", "rt") as fin:
+with open("bdcc/VERSION", "rt") as fin:
     version = fin.read().strip()
 
 scripts = []
@@ -43,7 +43,7 @@ setup (
         "gui.resources": ["icon.png",],
     },
     entry_points={
-        "console_scripts": ["bdc = bdc_client.app:main"],
+        "console_scripts": ["bdc = bdcc.app:main"],
     },
     scripts = scripts,
 )
