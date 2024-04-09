@@ -10,10 +10,11 @@ from getch import getch
 from rich.style import Style
 from rich.console import Console
 
-import utils
-from utils import use_logging, write_log, finish_logging
-from utils import flush_input
-from utils import uformat
+from bdcc.utils import read_config
+from bdcc.utils import to_json
+from bdcc.utils import use_logging, write_log, finish_logging
+from bdcc.utils import flush_input
+from bdcc.utils import uformat
 
 
 yaml.reader.Reader.NON_PRINTABLE = re.compile('[^\t\n\r -�-\U0010ffff]')
@@ -84,7 +85,7 @@ def menu_signin(console, config):
         return False
 
     response = requests.post(uformat(config, b"c2lnbmlu"), json=student)
-    res = utils.to_json(response)
+    res = to_json(response)
     if "error" in res and "result" not in res:
         console.print("\n[red][ERROR][/] {}".format(res["error"]))
         return False
@@ -123,7 +124,7 @@ def menu_update_pw(console, config):
     }
 
     response = requests.post(uformat(config, b"dXBkYXRl"), json=student)
-    res = utils.to_json(response)
+    res = to_json(response)
     
     if "error" in res and "result" not in res:
         console.print("\n[red][ERROR][/] {}".format(res["error"]))
@@ -134,7 +135,7 @@ def menu_update_pw(console, config):
 
     
     console.print("\n[#00FF00]Password updated successfully![/]")    
-    
+    config["PW"] = pw_new
     return student_id
 
 def menu_show_stats(console, config):
@@ -145,7 +146,7 @@ def menu_show_stats(console, config):
         "student_id": student_id,
     }
     response = requests.get(uformat(config, b"cmVzdWx0cw=="), params=student)
-    res = utils.to_json(response)
+    res = to_json(response)
 
     if "error" in res and "result" not in res:
         console.print("\n[red][ERROR][/] {}".format(res["error"]))
@@ -194,13 +195,21 @@ def menu_main(console, config):
         if input == "0" or input =="r":
             try:
                 pw = config["PW"]
-                with open(args.fpath_config, "rt", encoding="utf-8") as fin:
-                    config = yaml.safe_load(fin)
-                    if "ID" in config and student_id != config["ID"]:
-                        raise RuntimeError("Student ID has been changed! Please sign in again.")
+                
+                try:
+                    config = read_config(args.fpath_config)
+                except yaml.scanner.ScannerError:
+                    err_msg = "The configuration file contains some invalid characters."
                     
-                    if "PW" in config and pw != config["PW"]:
-                        raise RuntimeError("Password has been changed! Please sign in again.")
+                    console.print(traceback.format_exc())
+                    console.print("\n[red][ERROR][/] {}".format(err_msg), end="\n\n")
+                    break
+                    
+                if "ID" in config and student_id != config["ID"]:
+                    raise RuntimeError("Student ID has been changed! Please sign in again.")
+                
+                if "PW" in config and pw != config["PW"]:
+                    raise RuntimeError("Password has been changed! Please sign in again.")
 
                 config["PW"] = pw
             except yaml.scanner.ScannerError as err:
@@ -331,7 +340,7 @@ def submit(console, config):
 
     # Submit the files with the meta-information.
     response = requests.post(uformat(config, b"c3VibWl0"), data=submission, files=files)    
-    res = utils.to_json(response)
+    res = to_json(response)
 
     if "error" in res:
         write_log("\n[ERROR] {}".format(res["error"]))
@@ -381,8 +390,9 @@ if __name__ == "__main__":
                     break
                                 
                 try:
-                    with open(args.fpath_config, "rt", encoding="utf-8") as fin:
-                        config = yaml.safe_load(fin)
+                    # with open(args.fpath_config, "rt", encoding="utf-8") as fin:
+                    #     config = yaml.safe_load(fin)
+                    config = read_config(args.fpath_config)
                 except yaml.scanner.ScannerError:
                     err_msg = "The configuration file contains some invalid characters."
                     
