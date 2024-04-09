@@ -547,7 +547,7 @@ def main():
     app = QApplication(sys.argv)
     widget = Dialog()
 
-    icon = QIcon(osp.join(osp.dirname(__file__), "gui", "icon.png"))
+    icon = QIcon(osp.join(osp.dirname(__file__), "icon.png"))
     widget.setWindowIcon(icon)  # for Windows and Linux
     app.setWindowIcon(icon)
 
