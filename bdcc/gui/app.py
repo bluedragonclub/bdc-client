@@ -173,9 +173,11 @@ class Dialog(QDialog):
         self.ui.lineEdit_course.setText(str_course)
         self.ui.lineEdit_assignment.setText(str_assignment)
 
+        self.ui.tableWidget_problems.clear()
         for i, problem in enumerate(list_problems):
             self.ui.tableWidget_problems.setItem(i, 0, QTableWidgetItem(problem))
 
+        self.ui.tableWidget_files.clear()
         for i, fpath in enumerate(list_files):
             self.ui.tableWidget_files.setItem(i, 0, QTableWidgetItem(fpath))
 
