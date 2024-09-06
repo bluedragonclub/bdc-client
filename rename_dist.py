@@ -1,8 +1,12 @@
 import os
+from os.path import join as pjoin
 import platform
 
-import bdcc
 
+fpath_version = os.path.abspath(pjoin(os.getcwd(), "bdcc", "VERSION"))
+
+with open(fpath_version, "rt") as fin:
+    bdcc_version = fin.read()
 
 abbr_map = {
     "Windows": "win",
@@ -14,10 +18,9 @@ abbr_map = {
 }
 
 platform_uname = platform.uname()
-# os_name = abbr_map.get(platform_uname.system, platform_uname.system)  # 'Windows'
 arch = abbr_map.get(platform_uname.machine, platform_uname.machine)  # 'Windows'
 
-for entity in os.listdir("."):
+for entity in os.listdir("dist"):
 
     if entity.endswith("exe"):
         items = platform.platform().split('-')
@@ -32,9 +35,10 @@ for entity in os.listdir("."):
 
         fname, ext = os.path.splitext(entity)
         fname_new = "{fname}-{version}-{os_name}-{arch}{ext}".format(fname=fname,
-                                                                     version=bdcc.__version__,
+                                                                     version=bdcc_version,
                                                                      os_name=os_name,
                                                                      arch=arch,
                                                                      ext=ext)
 
-        os.rename(entity, fname_new)
+        os.rename(pjoin("dist", entity), pjoin("dist", fname_new))
+        print("[RENAME]", fname_new)
