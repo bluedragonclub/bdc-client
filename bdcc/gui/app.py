@@ -15,15 +15,18 @@ from pathlib import Path, PurePath
 import yaml
 
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QApplication, QDialog
+from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QDialog
 from PySide6.QtWidgets import QFileDialog
 from PySide6.QtWidgets import QTableWidgetItem
 from PySide6.QtWidgets import QMessageBox
 from PySide6.QtWidgets import QHeaderView
 from PySide6.QtWidgets import QLineEdit
+from PySide6.QtGui import QScreen
 from PySide6.QtGui import QTextCursor
 from PySide6.QtGui import QKeySequence
 from PySide6.QtGui import QIcon
+from PySide6.QtGui import QFont
 
 
 from bdcc.gui.ui_main_dialog import Ui_Dialog
@@ -59,10 +62,77 @@ def show_error_msg(title, err_msg):
 
 
 class Dialog(QDialog):
-    def __init__(self, parent=None):
+    def set_fonts(self):
+
+        font = QFont()
+        font_button = QFont()
+        font_syslog = QFont()
+    
+        screen = QScreen.availableGeometry(QApplication.primaryScreen())
+        dpi = QApplication.primaryScreen().logicalDotsPerInch()     
+
+        # Set font family and scale factor.
+        if sys.platform == "win32":     
+            default_font = u"Segoe UI"    
+            font_syslog.setFamilies([u"Consolas"])
+            
+            scale_factor = dpi / 120.0
+
+        elif sys.platform == "darwin":
+            default_font = u"San Francisco"
+            font_syslog.setFamilies([u"Courier New"])
+
+            scale_factor = dpi / 90.0
+
+
+        font.setFamilies([default_font])
+        font_button.setFamilies([default_font])
+
+
+        # Set font size.
+        font.setPointSize(int(12 * scale_factor))
+        font_button.setPointSize(int(12 * scale_factor))
+        font_syslog.setPointSize(int(12 * scale_factor) + 1)
+
+        # Set the font of syslog
+        self.ui.textBrowser_syslog.setFont(font_syslog)
+
+        # Set the fonts of goupBoxes.
+        self.ui.groupBox_files.setFont(font)
+        self.ui.groupBox_systemlog.setFont(font)        
+        self.ui.groupBox_problems.setFont(font)
+        self.ui.groupBox.setFont(font)
+
+        # Set the fonts of labels.
+        self.ui.label_id.setFont(font)
+        self.ui.label_pw.setFont(font)
+        self.ui.label_3.setFont(font)
+        self.ui.label_4.setFont(font)
+        self.ui.label_6.setFont(font)
+
+        # Set the fonts of lineEdits.
+        self.ui.lineEdit_config.setFont(font)                
+        self.ui.lineEdit_id.setFont(font)        
+        self.ui.lineEdit_pw.setFont(font)        
+        self.ui.lineEdit_course.setFont(font)
+        self.ui.lineEdit_assignment.setFont(font)
+        
+        # Set the fonts of buttons.
+        self.ui.pushButton_openFiles.setFont(font_button)
+        self.ui.pushButton_submitFiles.setFont(font_button)
+        self.ui.pushButton_showResults.setFont(font_button)
+        self.ui.pushButton_openConfig.setFont(font_button)
+        self.ui.pushButton_exportConfig.setFont(font_button)
+        self.ui.pushButton_changePassword.setFont(font_button)
+
+
+
+    def __init__(self, parent=None):        
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+
+        self.set_fonts()
 
         self.setWindowTitle("BlueDragonClub")
         self.setWindowFlag(Qt.WindowMinimizeButtonHint, True)
@@ -552,7 +622,10 @@ def main():
 
     app = QApplication(sys.argv)
     #app.setStyle("Fusion")
-    app.setStyle("Windows")
+    if sys.platform == "darwin":
+        app.setStyle("Windows")
+    elif sys.platform == "win32":
+      app.setStyle("Fusion")
     
     
     widget = Dialog()
