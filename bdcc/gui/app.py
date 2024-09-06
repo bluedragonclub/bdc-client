@@ -540,7 +540,6 @@ class Dialog(QDialog):
 
         self.write_log(logs)
 
-
 def main():
     libpaths = QApplication.libraryPaths()
     libpaths.append(os.getcwd())
@@ -549,7 +548,10 @@ def main():
     app = QApplication(sys.argv)
     widget = Dialog()
 
-    icon = QIcon(osp.join(osp.dirname(__file__), "icon.png"))
+    # icon = QIcon(osp.join(osp.dirname(__file__), "icon.png"))
+    dpath = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
+    fpath_icon = os.path.abspath(os.path.join(dpath, 'icon.png'))
+    icon = QIcon(fpath_icon)
     widget.setWindowIcon(icon)  # for Windows and Linux
     app.setWindowIcon(icon)
 

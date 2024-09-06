@@ -239,7 +239,8 @@ def menu_main(console, config):
 
 
 def colorize_log(log):
-    log = re.sub(r'\[Problem (.+)\] (.+)\n', r'[#ffff96][Problem \\1] \\2\n[/]', log)
+    print(["SYSTEM LOG"], log)
+    log = re.sub(r'\[Problem (.+)\] (.+)\n', r'[#ffff96][Problem \1] \2\n[/]', log)
     
     log = re.sub(r'All tests have been passed! \[(.+)pts]\n',
                  r'[#00FF00]All tests have been passed! [\\1pts][/]\n',

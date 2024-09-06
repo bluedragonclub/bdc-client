@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 11.0.2, 2023-10-06T16:37:31. -->
+<!-- Written by QtCreator 11.0.2, 2024-09-06T11:51:25. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -159,13 +159,13 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">..\app.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdc_client/app.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdc_client/app.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdc_client\app.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">D:/repos/bdc-client/bdcc/app.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdcc/app.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdcc/app.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdcc\app.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdc_client</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdcc</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.2">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -175,13 +175,13 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">ui_main_dialog.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdc_client/gui/ui_main_dialog.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdc_client/gui/ui_main_dialog.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdc_client\gui\ui_main_dialog.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">change_password_dialog.py2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdcc/gui/change_password_dialog.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdcc/gui/change_password_dialog.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdcc\gui\change_password_dialog.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdc_client/gui</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdcc/gui</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.3">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -191,13 +191,13 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">change_password_dialog.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdc_client/gui/change_password_dialog.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdc_client/gui/change_password_dialog.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdc_client\gui\change_password_dialog.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">ui_change_password_dialog.py2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdcc/gui/ui_change_password_dialog.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdcc/gui/ui_change_password_dialog.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdcc\gui\ui_change_password_dialog.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdc_client/gui</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdcc/gui</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.4">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -207,13 +207,13 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="bool" key="PE.EnvironmentAspect.PrintOnRun">false</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">ui_change_password_dialog.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdc_client/gui/ui_change_password_dialog.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdc_client/gui/ui_change_password_dialog.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdc_client\gui\ui_change_password_dialog.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">ui_main_dialog.py2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.D:/repos/bdc-client/bdcc/gui/ui_main_dialog.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/repos/bdc-client/bdcc/gui/ui_main_dialog.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">D:\repos\bdc-client\bdcc\gui\ui_main_dialog.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdc_client/gui</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/repos/bdc-client/bdcc/gui</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">5</value>
   </valuemap>

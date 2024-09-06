@@ -1,3 +1,4 @@
+import os
 import base64
 import logging
 import codecs 
@@ -130,6 +131,12 @@ def to_json(response):
 
 
 def read_config(fpath):
+    if fpath is None:
+        raise FileNotFoundError("You should define the configuration file.")
+    
+    if not os.path.isfile(fpath):
+        raise FileNotFoundError("There is no such file: %s"%(fpath))
+
     with codecs.open(fpath, 'r', encoding='utf-8') as fin:      
         list_lines = []        
         for line in fin:            
