@@ -154,7 +154,7 @@
         </property>
         <property name="font">
          <font>
-          <family>Consolas</family>
+          <family>Courier New</family>
           <pointsize>9</pointsize>
          </font>
         </property>

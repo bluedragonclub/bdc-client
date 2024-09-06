@@ -5,21 +5,24 @@ from os.path import join as pjoin
 
 droot = os.path.abspath(os.getcwd())
 
-added_files = []
+added_files = [
+    ("icon.png", pjoin(droot, 'bdcc', 'gui', 'icon.png'), 'DATA' ),      
+]
 
 a = Analysis(
-    ['submit.py'],
+    ['submit_gui.py'],
     pathex=[pjoin(droot, "bdcc")],
     binaries=[],
-    datas=added_files,
+    #datas=added_files,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=["PyQt5", "PySide6", "bdcc.gui"],
+    excludes=[],
     noarchive=False,
     optimize=0,
 )
+
 a.datas += added_files
 pyz = PYZ(a.pure)
 
@@ -29,14 +32,14 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='bdc-client-cli',
+    name='bdc-client-gui',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,

@@ -1,0 +1,2 @@
+pyinstaller macos_bdcc_cli.spec
+pyinstaller macos_bdcc_gui.spec

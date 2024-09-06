@@ -105,7 +105,7 @@ class Ui_Dialog(object):
         sizePolicy2.setHeightForWidth(self.textBrowser_syslog.sizePolicy().hasHeightForWidth())
         self.textBrowser_syslog.setSizePolicy(sizePolicy2)
         font2 = QFont()
-        font2.setFamilies([u"Consolas"])
+        font2.setFamilies([u"Courier New"])
         font2.setPointSize(9)
         self.textBrowser_syslog.setFont(font2)
 
