@@ -37,7 +37,7 @@ class Ui_Dialog(object):
         self.groupBox_files.setSizePolicy(sizePolicy)
         font = QFont()
         font.setFamilies([u"Tahoma"])
-        font.setPointSize(10)
+        font.setPointSize(14)
         self.groupBox_files.setFont(font)
         self.verticalLayout_5 = QVBoxLayout(self.groupBox_files)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
@@ -60,7 +60,7 @@ class Ui_Dialog(object):
         self.pushButton_openFiles.setMinimumSize(QSize(0, 24))
         font1 = QFont()
         font1.setFamilies([u"Tahoma"])
-        font1.setPointSize(9)
+        font1.setPointSize(14)
         self.pushButton_openFiles.setFont(font1)
 
         self.gridLayout_2.addWidget(self.pushButton_openFiles, 0, 2, 1, 1)
@@ -106,7 +106,7 @@ class Ui_Dialog(object):
         self.textBrowser_syslog.setSizePolicy(sizePolicy2)
         font2 = QFont()
         font2.setFamilies([u"Courier New"])
-        font2.setPointSize(9)
+        font2.setPointSize(14)
         self.textBrowser_syslog.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.textBrowser_syslog)

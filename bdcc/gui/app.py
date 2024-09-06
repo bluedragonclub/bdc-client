@@ -541,11 +541,20 @@ class Dialog(QDialog):
         self.write_log(logs)
 
 def main():
+    os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
+
     libpaths = QApplication.libraryPaths()
     libpaths.append(os.getcwd())
     QApplication.setLibraryPaths(libpaths)
 
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+
     app = QApplication(sys.argv)
+    #app.setStyle("Fusion")
+    app.setStyle("Windows")
+    
+    
     widget = Dialog()
 
     # icon = QIcon(osp.join(osp.dirname(__file__), "icon.png"))

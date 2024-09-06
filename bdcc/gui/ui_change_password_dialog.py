@@ -45,7 +45,7 @@ class Ui_Dialog(object):
         self.label_pw.setSizePolicy(sizePolicy1)
         font = QFont()
         font.setFamilies([u"Tahoma"])
-        font.setPointSize(10)
+        font.setPointSize(14)
         self.label_pw.setFont(font)
 
         self.horizontalLayout.addWidget(self.label_pw)

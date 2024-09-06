@@ -25,7 +25,7 @@
      <property name="font">
       <font>
        <family>Tahoma</family>
-       <pointsize>10</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="title">
@@ -57,7 +57,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>9</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -92,7 +92,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>9</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -134,7 +134,7 @@
      <property name="font">
       <font>
        <family>Tahoma</family>
-       <pointsize>10</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="title">
@@ -155,7 +155,7 @@
         <property name="font">
          <font>
           <family>Courier New</family>
-          <pointsize>9</pointsize>
+          <pointsize>14</pointsize>
          </font>
         </property>
        </widget>
@@ -179,7 +179,7 @@
           <property name="font">
            <font>
             <family>Tahoma</family>
-            <pointsize>9</pointsize>
+            <pointsize>14</pointsize>
            </font>
           </property>
           <property name="text">
@@ -219,7 +219,7 @@
      <property name="font">
       <font>
        <family>Tahoma</family>
-       <pointsize>10</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="title">
@@ -244,7 +244,7 @@
      <property name="font">
       <font>
        <family>Tahoma</family>
-       <pointsize>10</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="title">
@@ -269,7 +269,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -288,7 +288,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
            </widget>
@@ -304,7 +304,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>9</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -323,7 +323,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>9</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -349,7 +349,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -368,7 +368,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
            </widget>
@@ -384,7 +384,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -403,7 +403,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
            </widget>
@@ -419,7 +419,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>9</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -445,7 +445,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -464,7 +464,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
            </widget>
@@ -484,7 +484,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
             <property name="text">
@@ -509,7 +509,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>10</pointsize>
+              <pointsize>14</pointsize>
              </font>
             </property>
            </widget>
