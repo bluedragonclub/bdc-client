@@ -1,0 +1,2 @@
+pyinstaller win_bdc-client_cli.spec
+pyinstaller win_bdc-client_gui.spec
