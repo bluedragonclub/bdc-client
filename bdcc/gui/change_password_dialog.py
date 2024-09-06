@@ -35,7 +35,7 @@ class ChangePasswordDialog(QDialog):
 
         elif sys.platform == "darwin":
             default_font = u"San Francisco"
-            scale_factor = dpi / 90.0
+            scale_factor = dpi / 70.0
 
 
         font.setFamilies([default_font])

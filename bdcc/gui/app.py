@@ -82,7 +82,7 @@ class Dialog(QDialog):
             default_font = u"San Francisco"
             font_syslog.setFamilies([u"Courier New"])
 
-            scale_factor = dpi / 90.0
+            scale_factor = dpi / 70.0
 
 
         font.setFamilies([default_font])
@@ -623,9 +623,9 @@ def main():
     app = QApplication(sys.argv)
     #app.setStyle("Fusion")
     if sys.platform == "darwin":
-        app.setStyle("Windows")
+        app.setStyle("Fusion")
     elif sys.platform == "win32":
-      app.setStyle("Fusion")
+        app.setStyle("Fusion")
     
     
     widget = Dialog()
