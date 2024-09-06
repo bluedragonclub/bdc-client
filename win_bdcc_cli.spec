@@ -3,24 +3,33 @@
 import os
 from os.path import join as pjoin
 
+from bdcc_dist import get_app_name
+from bdcc_dist import compress_app
+
+
+app_name = get_app_name("cli")
+
 droot = os.path.abspath(os.getcwd())
 
-added_files = []
+add_files = [
+    ("icon.png", pjoin(droot, 'bdcc', 'gui', 'icon.png'), 'DATA' ),      
+]
 
 a = Analysis(
     ['submit.py'],
-    pathex=[pjoin(droot, "bdcc")],
+    pathex=[],
     binaries=[],
-    datas=added_files,
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=["PyQt5", "PySide6", "bdcc.gui"],
+    excludes=[],
     noarchive=False,
     optimize=0,
 )
-a.datas += added_files
+
+a.datas += add_files
 pyz = PYZ(a.pure)
 
 fpath_icon = pjoin(droot, "bdcc", "gui", "icon.png")
@@ -28,16 +37,13 @@ fpath_icon = pjoin(droot, "bdcc", "gui", "icon.png")
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
-    name='bdc-client-cli',
+    exclude_binaries=True,
+    name=app_name,
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
     console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
@@ -45,4 +51,18 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=fpath_icon
+
 )
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    ups=True,
+    name=app_name
+)
+
+dpath_dist = os.path.abspath("dist")
+compress_app(dpath_dist, app_name)

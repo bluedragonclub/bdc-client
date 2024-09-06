@@ -54,23 +54,23 @@ def compress_app(dpath_dist, app_name, fpath_out=None):
 
     if "win" in app_name:
         ext = ".exe"
+
+        dpath_app_internal = pjoin(dpath_dist, app_name)
+        # new_dpath_app_internal = pjoin(dpath_dist_app, app_name)
+        # shutil.copytree(dpath_app_internal, new_dpath_app_internal,dirs_exist_ok=True)
+        dpath_dist_app = dpath_app_internal
+
     elif "macos" in app_name:
         ext = ".app"
+        app_exe = "{}{}".format(app_name, ext)
+        
+        dpath_dist_app = pjoin(dpath_dist, "dist-{}".format(app_name))
+        os.makedirs(dpath_dist_app, exist_ok=True)
 
-    app_exe = "{}{}".format(app_name, ext)
-    
-    dpath_dist_app = pjoin(dpath_dist, "dist-{}".format(app_name))
-    os.makedirs(dpath_dist_app, exist_ok=True)
+        dpath_app_internal = pjoin(dpath_dist, app_name)
+        new_dpath_app_internal = pjoin(dpath_dist_app, app_name)
+        shutil.copytree(dpath_app_internal, new_dpath_app_internal,dirs_exist_ok=True)
 
-    dpath_app_internal = pjoin(dpath_dist, app_name)
-    new_dpath_app_internal = pjoin(dpath_dist_app, app_name)
-    shutil.copytree(dpath_app_internal, new_dpath_app_internal,dirs_exist_ok=True)
-
-    if "win" in app_name:
-        fpath_app = pjoin(dpath_dist, app_exe)
-        new_fpath_app = pjoin(dpath_dist_app, app_exe)
-        shutil.copyfile(fpath_app, new_fpath_app)
-    elif "macos" in app_name:
         dpath_app = pjoin(dpath_dist, app_exe)
         new_dpath_app = pjoin(dpath_dist_app, app_exe)
         shutil.copytree(dpath_app, new_dpath_app, dirs_exist_ok=True)
