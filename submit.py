@@ -391,8 +391,6 @@ if __name__ == "__main__":
                     break
                                 
                 try:
-                    # with open(args.fpath_config, "rt", encoding="utf-8") as fin:
-                    #     config = yaml.safe_load(fin)
                     config = read_config(args.fpath_config)
                 except yaml.scanner.ScannerError:
                     err_msg = "The configuration file contains some invalid characters."

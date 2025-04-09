@@ -286,9 +286,8 @@ class Dialog(QDialog):
         if "PW" in config:
             config.pop("PW")
 
-        # with open(fpath, "wt", encoding="utf-8") as fout:
-        with open(fpath, "wt") as fout:
-            yaml.dump(config, fout) #, encoding=('utf-8'))
+        with open(fpath, "wt", encoding="utf-8") as fout:
+            yaml.dump(config, fout, allow_unicode=True)
 
     def change_password_clicked(self):
         self.change_password_dialog.clear()
@@ -374,6 +373,9 @@ class Dialog(QDialog):
 
         self.ui.tableWidget_files.clear()
         for i, fpath in enumerate(fpaths):
+            fpath = fpath.strip()
+            fpath = fpath.strip('"')
+            fpath = fpath.strip("'")
             self.ui.tableWidget_files.setItem(i, 0, QTableWidgetItem(fpath))
 
     def get_config_from_gui(self):
@@ -392,7 +394,8 @@ class Dialog(QDialog):
             item = self.ui.tableWidget_files.item(i, 0)
             item_text = item.text() if item else None
             if item and item_text:
-                fpath = str(Path(item.text()).absolute())
+                fpath = item.text()
+                fpath = fpath.strip(' \'"')                
                 config["FILES"].append(fpath)
 
 
@@ -522,7 +525,6 @@ class Dialog(QDialog):
         files = []
         for fpath in FILES:
             fname = osp.basename(fpath)
-
             if not osp.isfile(fpath):
                 err_msg = "File not found:\n{}".format(fpath)
                 show_error_msg("Submission", err_msg)
