@@ -111,7 +111,10 @@ def uformat(config, ep):
     raw_1 = b"aHR0cDovLzE2NS4xOTQuMTY0Ljg2OjEwMDAxL3t9"
     raw_2 = b"aHR0cDovLzE2NS4xOTQuMTY0Ljg2OjEwMDAyL3t9"
     
+    
     course_id = config["COURSE"]
+    if not course_id:
+        raise RuntimeError("Course ID must be defined!")
     
     if "OOP" in course_id or "DRALG" in course_id:
         raw = raw_1

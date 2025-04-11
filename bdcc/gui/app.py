@@ -321,6 +321,13 @@ class Dialog(QDialog):
 
             try:
                 config = self.get_config_from_gui()
+
+                course_id = config["COURSE"]
+                if not course_id:
+                    err_msg = "Course ID must be defined!"
+                    show_error_msg("Error in changing password", err_msg)
+                    return    
+
                 config["PW"] = pw_old
 
                 response = requests.post(uformat(config, b"dXBkYXRl"), json=student)
